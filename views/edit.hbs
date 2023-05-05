@@ -1,0 +1,60 @@
+<div class="container mt-5"  >
+ <form action="/restaurants" method="POST">
+
+  <div class="mb-3">
+    <label for="name">項目</label>
+    <input 
+    class="form-control"
+    type="text" 
+    placeholder="輸入項目" 
+    id="name"
+    name="name"
+    style="width:200px; height:40px;"
+    value=""
+    required>
+  </div>
+
+  <div class="mb-3">
+    <label for="name_en">金額</label>
+    <input 
+    class="form-control"
+    type="text" 
+    placeholder="輸入金額" 
+    id="name_en"
+    name="name_en"
+    style="width:200px; height:40px;"
+    value=""
+    required>
+  </div>
+  
+  <div class="mb-3">
+    <label for="category">類別
+    <input 
+    class="form-control"
+    list="categories" 
+    placeholder="輸入或從下拉式選單選擇類別"
+    id="category" 
+    name="category"
+    id="category"
+    style="width:200px; height:40px"
+    autocomplete="off"
+    value=""
+    required></label>
+    <datalist id="categories">
+          <option>美式</option>
+          <option>咖啡</option>
+          <option>中東料理</option>
+          <option>日本料理</option>
+          <option>義式餐廳</option>
+    </datalist>
+  </div>
+
+  
+  </div>
+  <div class="mb-3">
+    <button class="btn btn-success btn-sm" type="submit">Save</button>
+    <a class="btn btn-primary btn-sm" href="/"role="button">Back</a>
+    <input type="reset"class="btn btn-danger btn-sm" value="Reset" />
+  </div>
+   </form>
+</div>

@@ -2,7 +2,8 @@ const Port=3000
 //require區
 const express=require('express') 
 const exphbs = require('express-handlebars')
-const methodOverride = require('method-override')
+const methodOverride=require('method-override')
+const routes=require('./routes')
 
 const app =express()
 
@@ -11,9 +12,9 @@ app.set('view engine', 'hbs')
 
 //middleware區
 app.use(express.urlencoded({ extended: true }))
-app.use(methodOverride('_method'))
 
 
+app.use(routes)
 
 
 
@@ -21,5 +22,5 @@ app.use(methodOverride('_method'))
 
 
 app.listen(Port,() => {
-  console.log(`Express is listening on localhost:${port}`)
+  console.log(`Express is listening on localhost:${Port}`)
 })
