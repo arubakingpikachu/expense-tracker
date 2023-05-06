@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars')
 const methodOverride=require('method-override')
 const routes=require('./routes')
 const session = require('express-session')
+const usePassport = require('./config/passport')
 
 require('./config/mongoose')
 if (process.env.NODE_ENV !== 'production') {
@@ -24,7 +25,7 @@ app.use(session({
 }))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
-
+usePassport(app)
 app.use(routes)
 
 
