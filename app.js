@@ -4,7 +4,11 @@ const express=require('express')
 const exphbs = require('express-handlebars')
 const methodOverride=require('method-override')
 const routes=require('./routes')
+
 require('./config/mongoose')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 const app =express()
 
