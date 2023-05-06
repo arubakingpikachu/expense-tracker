@@ -7,6 +7,7 @@ const routes=require('./routes')
 const session = require('express-session')
 const usePassport = require('./config/passport')
 
+
 require('./config/mongoose')
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
@@ -26,6 +27,12 @@ app.use(session({
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 usePassport(app)
+app.use((req, res, next) => {
+  console.log(req.isAuthenticated())
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  next()
+})
 app.use(routes)
 
 
