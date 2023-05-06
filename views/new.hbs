@@ -1,5 +1,5 @@
 <div class="container mt-5"  >
- <form action="/restaurants" method="POST">
+ <form action="/records" method="POST">
 
   <div class="mb-3">
     <label for="name">項目</label>
@@ -14,37 +14,30 @@
   </div>
 
   <div class="mb-3">
-    <label for="name_en">金額</label>
+    <label for="amount">金額</label>
     <input 
     class="form-control"
-    type="text" 
+    type="number" 
     placeholder="輸入金額" 
-    id="name_en"
-    name="name_en"
+    id="amount"
+    name="amount"
+    style="width:200px; height:40px;"
+    required>
+  </div>
+
+  <div class="mb-3">
+    <label for="amount">日期</label>
+    <input 
+    class="form-control"
+    type="date" 
+    placeholder="輸入金額" 
+    id="date"
+    name="date"
     style="width:200px; height:40px;"
     required>
   </div>
   
-  <div class="mb-3">
-    <label for="category">類別
-    <input 
-    class="form-control"
-    list="categories" 
-    placeholder="輸入或從下拉式選單選擇類別"
-    id="category" 
-    name="category"
-    id="category"
-    style="width:200px; height:40px"
-    autocomplete="off"
-    required></label>
-    <datalist id="categories">
-          <option>美式</option>
-          <option>咖啡</option>
-          <option>中東料理</option>
-          <option>日本料理</option>
-          <option>義式餐廳</option>
-    </datalist>
-  </div>
+
 
   
   </div>

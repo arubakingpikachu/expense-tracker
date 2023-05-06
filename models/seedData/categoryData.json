@@ -1,0 +1,9 @@
+{
+  "results": [
+    {"categoryName": "家居物業","categoryIcon": "https://fontawesome.com/icons/home?style=solid"},
+    {"categoryName": "交通出行","categoryIcon": "https://fontawesome.com/icons/shuttle-van?style=solid"},
+    {"categoryName": "休閒娛樂","categoryIcon": "https://fontawesome.com/icons/grin-beam?style=solid"},
+    {"categoryName": "餐飲食品","categoryIcon": "https://fontawesome.com/icons/utensils?style=solid"},
+    {"categoryName": "其他","categoryIcon": "https://fontawesome.com/icons/pen?style=solid"}
+  ]
+}

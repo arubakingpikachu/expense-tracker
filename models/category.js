@@ -2,11 +2,11 @@ const mongoose=require('mongoose')
 const { Schema } = mongoose
 
 const categorySchema = new Schema({
-  name:{
+  categoryName:{
     type:String,
     required: true
   },
-  icon:{
+  categoryIcon:{
     type: String,
     required: true
   }
