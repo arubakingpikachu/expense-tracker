@@ -3,9 +3,11 @@ const Record=require('../../models/record')// 引入Record model
 const Category = require('../../models/category')
 const router=express.Router()
 
-router.get('/new', (req, res) => {
-  return res.render('new')
-})//new的頁面
+router.get('/new',async (req, res) => {
+  const category=await Category.find({}).lean()
+  res.render('new',{categories:category})
+}) //new的頁面
+
 router.post('/',(req,res)=>{
   const userId=req.user._id
   const {name,amount,date,category} = req.body       // 從 req.body 拿出表單裡的 name 資料
