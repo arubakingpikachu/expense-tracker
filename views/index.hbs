@@ -1,28 +1,26 @@
-<h3><span>總金額</span></h3>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">NO</th>
-      <th scope="col">項目</th>
-      <th scope="col">金額</th>
-      <th scope="col">日期</th>
-      <th scope="col">編輯</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row"></th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>
-        <button type="button" class="btn btn-primary">EDIT</button>
-        <button type="button" class="btn btn-danger">DELETE</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="d-grid gap-2 col-6 mx-auto">
-  <a href="/records/new" class="btn btn-primary">新增支出</a>
-</div>
+<h3>總金額</h3>
+<ul>
+  {{#each record}}
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-auto me-auto">
+          <h4 style="display: inline; vertical-align: middle;">
+            {{ this.name }}
+          </h4>
+          <h5 style="display: inline; vertical-align: middle;">
+            {{this.amount}}
+          </h5>
+        </div>
+        <div class="col-auto">
+          <form action="./records/{{ this._id }}?_method=PUT" method="POST" style="display: inline;">
+            <button type="button" class="btn btn-primary">EDIT</button>
+          </form>
+          <form action="./record/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+            <button type="button" class="btn btn-danger">DELETE</button>
+          </form>
+        </div>
+      </div>
+    </li>
+  {{/each}}
+</ul>
+<a class="btn btn btn-success mb-3" href="/records/new">Create</a>
