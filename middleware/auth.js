@@ -1,5 +1,8 @@
 module.exports={
-  authenticator:(req,res,next)=>{if(req.isAuthenticated()){
+  authenticator:(req,res,next)=>{
+    if(req.isAuthenticated()){
     return next()
-  }else{res.redirect('/users/login')}
+  }else{
+    req.flash('warning_msg','請先登入')
+    res.redirect('/users/login')}
 }}//判斷是否有經過驗證的middleware
