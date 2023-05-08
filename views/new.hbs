@@ -32,7 +32,7 @@
     <input 
     class="form-control"
     type="date" 
-    placeholder="輸入金額" 
+    placeholder="yyyy-mm-dd"
     id="date"
     name="date"
     style="width:200px; height:40px;"
@@ -41,7 +41,7 @@
   <!--類別-->
   <div class="mb-3">
     <label for="category">類別</label>
-    <select class="form-control" aria-label="Default select example" name="category" id="category">
+    <select class="form-control" aria-label="Default select example" name="category" id="category"style="width:200px; height:40px">
       {{#each category}}
       <option value="{{this.categoryName}}">{{this.categoryName}}</option>
       {{/each}}
@@ -56,7 +56,5 @@
   </div>
   
    </form>
-</div>
-</div>
 </div>
 </div>

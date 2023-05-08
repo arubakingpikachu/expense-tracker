@@ -11,14 +11,53 @@ router.get('/new',async (req, res) => {
 router.post('/',async (req,res)=>{
   
   const {name,amount,date,category}=req.body
+  const userId=req.user._id
 
   const cates=await Category.find({}).lean()
   const refCate=cates.find(cate=>{return cate.categoryName===category})
-  
-  await Record.create({name,amount,date,categoryId:refCate._id,userId:req.user._id})
-  res.redirect('/')
-})//new的機制
 
+  console.log(date)
+ 
+  
+  await Record.create({name,amount,date,categoryId:refCate._id,userId})
+  res.redirect('/')
+})//new POST
+
+router.get('/:id/edit',async (req,res)=>{
+  const userId=req.user._id
+  const _id=req.params.id
+
+  try{
+    const cates=await Category.find({}).lean()
+    const record=await Record.findOne({_id,userId}).lean()
+    
+    console.log(record)
+    console.log(record.date.toLocaleDateString( { year: 'numeric', month: 'long', day: 'numeric'}))
+   
+    record.date=new Date(record.date)
+
+    console.log(record.date)
+    
+
+    res.render('edit',{record})
+  }catch{console.log(error)}
+  
+})
+
+
+router.delete('/:id',async (req,res)=>{
+  const userId = req.user._id
+  const _id=req.params.id
+
+  try{
+  const record=await Record.findOne({ _id, userId })
+  record.remove()
+  res.redirect('/')}catch{console.log(error)}
+  
+  
+  
+  
+})//delete
 
 
 

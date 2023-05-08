@@ -12,11 +12,9 @@
           </h5>
         </div>
         <div class="col-auto">
-          <form action="./records/{{ this._id }}?_method=PUT" method="POST" style="display: inline;">
-            <button type="button" class="btn btn-primary">EDIT</button>
-          </form>
-          <form action="./record/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
-            <button type="button" class="btn btn-danger">DELETE</button>
+          <a class="btn btn-success" href="./records/{{ this._id }}/edit">edit</a>
+          <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+            <button class="btn btn-danger" type="submit">delete</button>
           </form>
         </div>
       </div>
