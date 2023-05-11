@@ -2,7 +2,7 @@
   <div class="col-md-6 m-auto">
     <div class="card card-body">
        <h3>修改支出</h3>
- <form action="/records" method="POST">
+ <form action="/records/{{record._id}}?_method=PUT" method="POST">
 <!--項目-->
   <div class="mb-3">
     <label for="name">項目</label>

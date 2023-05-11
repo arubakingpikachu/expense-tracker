@@ -15,15 +15,17 @@ router.post('/',async (req,res)=>{
   const userId=req.user._id
  
   const refCate=await Category.findOne({categoryName:category})//找出要新增的類別
+  
+  const categoryId=refCate._id
  
-  await Record.create({name,amount,date,categoryId:refCate._id,userId})//創造新資料，categoryId用refCate的_is
+  await Record.create({name,amount,date,categoryId,userId})//創造新資料，categoryId用refCate的_is
   res.redirect('/')
 })//new POST
 
 router.get('/:id/edit',async (req,res)=>{
   const userId=req.user._id//登入使用者的id
   const record_id=req.params.id//條目id
-
+  try{
   const record=await Record.findOne({_id:record_id,userId}).lean()//取出該筆支出完整的紀錄
   
   const cate_id=record.categoryId//該筆支出的類別id
@@ -35,24 +37,32 @@ router.get('/:id/edit',async (req,res)=>{
   record.date=record.date.toLocaleDateString('zh-TW',{  year:'numeric',month:'numeric',
   day: 'numeric',})
   
-console.log(record.date)
-
   res.render('edit',{record,cateName,category})
- 
-  
+  }catch{console.log('error')}
+   
 })//get EDIT
 
 
-router.put('/:id',async (req, res) => {
-  const userId = req.user._id
-  const _id = req.params.id
 
+
+router.put('/:id',async (req,res)=>{
+  const userId = req.user._id
+  const record_id=req.params.id
+  const {name,amount,date,category}=req.body
+  try{
+    const refCate=await Category.findOne({categoryName:category})
+    const categoryId=refCate._id
+    const record=await Record.findOne({_id:record_id,userId})
+    
+    record.name=name
+    record.amount=amount
+    record.date=date
+    record.categoryId=categoryId
+    await record.save()
+    res.redirect('/')
+  }catch{console.log('error')}
   
-  RestData.findOne({_id,userId})
-    .then(restaurant => { return restaurant.update(req.body) })
-    .then(() => res.redirect(`/restaurants/${_id}`))
-    .catch(error => console.log(error))
-})// 儲存編輯條目
+})
 
 
 router.delete('/:id',async (req,res)=>{
