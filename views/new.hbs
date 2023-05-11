@@ -1,6 +1,7 @@
 <div class="row mt-5">
   <div class="col-md-6 m-auto">
     <div class="card card-body">
+      <h3>新增支出</h3>
  <form action="/records" method="POST">
 <!--項目-->
   <div class="mb-3">
@@ -20,7 +21,8 @@
     <input 
     class="form-control"
     type="number" 
-    placeholder="輸入金額" 
+    placeholder="輸入金額，最小值為1" 
+    min="1"
     id="amount"
     name="amount"
     style="width:200px; height:40px;"
@@ -28,11 +30,11 @@
   </div>
 <!--日期-->
   <div class="mb-3">
-    <label for="amount">日期</label>
+    <label for="date">日期</label>
     <input 
     class="form-control"
-    type="date" 
-    placeholder="yyyy-mm-dd"
+    type="date-local" 
+    placeholder="yyyy/mm/dd"
     id="date"
     name="date"
     style="width:200px; height:40px;"
@@ -41,7 +43,8 @@
   <!--類別-->
   <div class="mb-3">
     <label for="category">類別</label>
-    <select class="form-control" aria-label="Default select example" name="category" id="category"style="width:200px; height:40px">
+    <select class="form-control" aria-label="Default select example" name="category" id="category"style="width:200px; height:40px" >
+      <option selected disabled hidden placeholder="必選"></option>
       {{#each category}}
       <option value="{{this.categoryName}}">{{this.categoryName}}</option>
       {{/each}}
