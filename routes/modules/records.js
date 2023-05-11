@@ -52,9 +52,7 @@ router.delete('/:id',async (req,res)=>{
   try{
   const record=await Record.findOne({ _id, userId })
   record.remove()
-  res.redirect('/records/login')}catch{console.log(error)}  
-  
-
+  res.redirect('/')}catch{console.log('error')}  
   
 })//delete
 
