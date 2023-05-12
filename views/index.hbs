@@ -1,4 +1,19 @@
-<h3>總金額{{totalAmount}}</h3>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    依支出類別
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="/">全部</a></li>
+    <li><a class="dropdown-item" href="/家居物業">家居物業</a></li>
+    <li><a class="dropdown-item" href="/交通出行">交通出行</a></li>
+    <li><a class="dropdown-item" href="/休閒娛樂">休閒娛樂</a></li>
+    <li><a class="dropdown-item" href="/餐飲食品">餐飲食品</a></li>
+    <li><a class="dropdown-item" href="/其他">其他</a></li>
+  </ul>
+</div>
+
+<h3>總金額</h3>
+<h1>{{totalAmount}}</h1>
 <ul>
   {{#each record}}
     <li class="list-group-item">
